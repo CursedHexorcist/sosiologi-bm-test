@@ -4,7 +4,7 @@ import styles from "../styles";
 const texts = [
   "SMA NEGERI 10 PONTIANAK",
   "SEKOLAHNYA PARA JUARA",
-  "MADE BY GABRIELL T XA",
+  "MADE BY GABRIELL T  XA",
 ];
 
 const Stats = () => {
@@ -13,29 +13,41 @@ const Stats = () => {
   const [isAnimating, setIsAnimating] = useState(false);
   const textRef = useRef(null);
 
-  const scrollDuration = 8000;
+  // Durasi scroll (ms)
+  const scrollDuration = 10000; // 10 detik scroll perlahan
 
-  // Fungsi bantu dapatkan posisi awal berdasarkan ukuran layar
-  const getStartPosition = () => {
-    if (window.innerWidth >= 768) {
-      // PC: mulai dari kanan dengan ekstra offset supaya teks lebih lebar space-nya
-      return window.innerWidth + 100;
-    }
-    // Mobile: mulai dari tepat kanan layar
-    return window.innerWidth;
+  // Hitung posisi awal dan akhir berdasarkan ukuran teks dan viewport
+  const getPositions = () => {
+    const vw = window.innerWidth;
+    const textWidth = textRef.current ? textRef.current.offsetWidth : 0;
+
+    // posisi mulai di luar viewport kanan
+    const startPos = vw;
+
+    // posisi akhir di luar viewport kiri = -lebar teks
+    const endPos = -textWidth;
+
+    // total jarak scroll
+    const distance = startPos - endPos;
+
+    return { startPos, endPos, distance };
   };
 
   useEffect(() => {
     if (!textRef.current) return;
 
-    setIsAnimating(false);
-    setTranslateX(getStartPosition());
+    const { startPos, endPos } = getPositions();
 
+    setIsAnimating(false);
+    setTranslateX(startPos);
+
+    // beri delay kecil sebelum mulai animasi supaya posisi translateX benar dulu
     const animTimeout = setTimeout(() => {
       setIsAnimating(true);
-      setTranslateX(-textRef.current.offsetWidth);
+      setTranslateX(endPos);
     }, 50);
 
+    // setelah animasi selesai, ganti teks berikutnya
     const nextTextTimeout = setTimeout(() => {
       setCurrentIndex((prev) => (prev + 1) % texts.length);
     }, scrollDuration + 50);
