@@ -19,7 +19,7 @@ const Hero = () => (
         <div className="flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px]">
           <img src={discount} alt="Icon" className="w-[32px] h-[32px]" />
           <p className={`${styles.paragraph} ml-2 text-sm`}>
-            Nama: <span className="text-white font-semibold">Gabriell T</span>
+            Nama Siswa: <span className="text-white font-semibold">Gabriell T</span>
           </p>
         </div>
         <div className="flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px]">
@@ -31,7 +31,7 @@ const Hero = () => (
         <div className="flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px]">
           <img src={discount} alt="Icon" className="w-[32px] h-[32px]" />
           <p className={`${styles.paragraph} ml-2 text-sm`}>
-            Guru: <span className="text-white font-semibold">Ibu Yulida</span>
+            Nama Guru: <span className="text-white font-semibold">Ibu Yulida</span>
           </p>
         </div>
         <div className="flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px]">
