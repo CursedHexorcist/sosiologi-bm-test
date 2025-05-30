@@ -2,71 +2,58 @@ import { useState, useEffect, useRef } from "react";
 import styles from "../styles";
 
 const texts = [
-  "SMA NEGERI 10 PONTIANAK - JUARA SEJATI",
-  "SMA NEGERI 10 PONTIANAK - JUARA SEJATI",
-  "SMA NEGERI 10 PONTIANAK - JUARA SEJATI",
+  "SMA NEGERI 10 PONTIANAK",
+  "SEKOLAHNYA PARA JUARA",
+  "MADE BY GABRIELL T XA",
 ];
 
 const Stats = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [animateStage, setAnimateStage] = useState("fadeIn"); // fadeIn, scroll, fadeOut
+  const [translateX, setTranslateX] = useState(0);
   const textRef = useRef(null);
 
-  // Durasi animasi (ms)
-  const fadeInDuration = 300;   // muncul cepat
-  const scrollDuration = 8000;  // jalan lambat
-  const fadeOutDuration = 300;  // hilang cepat
+  // Durasi scroll dalam ms
+  const scrollDuration = 8000;
 
   useEffect(() => {
-    let timeout1, timeout2, timeout3;
+    if (!textRef.current) return;
 
-    if (animateStage === "fadeIn") {
-      // setelah fadeIn, mulai scroll
-      timeout1 = setTimeout(() => {
-        setAnimateStage("scroll");
-      }, fadeInDuration);
-    }
+    // Reset posisi ke kanan penuh (100% viewport width)
+    setTranslateX(window.innerWidth);
 
-    if (animateStage === "scroll") {
-      // setelah scroll selesai, fadeOut
-      timeout2 = setTimeout(() => {
-        setAnimateStage("fadeOut");
-      }, scrollDuration);
-    }
+    // Mulai animasi dengan delay sedikit untuk reset posisi
+    const timeoutId = setTimeout(() => {
+      setTranslateX(-textRef.current.offsetWidth);
+    }, 50);
 
-    if (animateStage === "fadeOut") {
-      // setelah fadeOut, ganti teks dan fadeIn lagi
-      timeout3 = setTimeout(() => {
-        setCurrentIndex((prev) => (prev + 1) % texts.length);
-        setAnimateStage("fadeIn");
-      }, fadeOutDuration);
-    }
+    // Setelah animasi selesai, ganti teks
+    const changeTextTimeout = setTimeout(() => {
+      setCurrentIndex((prev) => (prev + 1) % texts.length);
+    }, scrollDuration + 100); // +100 ms untuk buffer
 
     return () => {
-      clearTimeout(timeout1);
-      clearTimeout(timeout2);
-      clearTimeout(timeout3);
+      clearTimeout(timeoutId);
+      clearTimeout(changeTextTimeout);
     };
-  }, [animateStage]);
-
-  // Style untuk animasi
-  const stylesText = {
-    opacity: animateStage === "fadeIn" ? 1 : animateStage === "fadeOut" ? 0 : 1,
-    transition: `opacity ${animateStage === "fadeIn" || animateStage === "fadeOut" ? fadeInDuration : 0}ms ease-in-out`,
-    whiteSpace: "nowrap",
-    fontSize: "3rem", // besar
-    fontWeight: "700",
-    color: "white",
-    position: "relative",
-    left: animateStage === "scroll" ? "-100%" : "0",
-    transitionProperty: animateStage === "scroll" ? "left" : "opacity",
-    transitionDuration: animateStage === "scroll" ? `${scrollDuration}ms` : `${fadeInDuration}ms`,
-    transitionTimingFunction: animateStage === "scroll" ? "linear" : "ease-in-out",
-  };
+  }, [currentIndex]);
 
   return (
-    <section className={`${styles.flexCenter} overflow-hidden w-full py-4`} style={{ height: 80 }}>
-      <div style={stylesText} ref={textRef}>
+    <section
+      className={`${styles.flexCenter} overflow-hidden w-full py-4`}
+      style={{ height: 80 }}
+    >
+      <div
+        ref={textRef}
+        style={{
+          whiteSpace: "nowrap",
+          fontSize: "3rem",
+          fontWeight: "700",
+          color: "white",
+          position: "relative",
+          transform: `translateX(${translateX}px)`,
+          transition: `transform ${scrollDuration}ms linear`,
+        }}
+      >
         {texts[currentIndex]}
       </div>
     </section>
