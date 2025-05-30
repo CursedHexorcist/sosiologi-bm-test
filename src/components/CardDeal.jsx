@@ -1,26 +1,27 @@
-import { card } from "../assets";
 import styles, { layout } from "../styles";
-import Button from "./Button";
 
 const CardDeal = () => (
   <section className={layout.section}>
-    {/* Card Deal Info */}
+    {/* Info Kiri */}
     <div className={layout.sectionInfo}>
       <h2 className={styles.heading2}>
-        Find a better card deal
-        <br className="sm:block hidden" /> in few easy steps.
+        Merokok di <br className="sm:block hidden" /> Tempat Umum
       </h2>
       <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-        Arcu tortor, purus in mattis at sed integer faucibus. Aliquet quis
-        aliquet eget mauris tortor.ç Aliquet ultrices ac, ametau.
+        Merokok di tempat umum, terutama di area yang dilarang, melanggar norma
+        kesehatan dan aturan hukum yang melindungi hak orang lain untuk menghirup
+        udara bersih. Tindakan ini juga menunjukkan kurangnya kepedulian terhadap
+        kesehatan orang lain, terutama anak-anak dan lansia.
       </p>
-      {/* Get Started */}
-      <Button styles="mt-10" />
     </div>
 
-    {/* Background Image */}
+    {/* Gambar Kanan */}
     <div className={layout.sectionImg}>
-      <img src={card} alt="Card Deal" className="w-[100%] h-[100%]" />
+      <img
+        src="/photos/image-rokok.jpg"
+        alt="Merokok"
+        className="w-[100%] h-[100%] object-cover rounded-[20px]"
+      />
     </div>
   </section>
 );
