@@ -12,9 +12,9 @@ const TypingEffect = () => {
   const [textIndex, setTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [deleting, setDeleting] = useState(false);
-  const typingSpeed = 100; // ms per character
+  const typingSpeed = 100;
   const deletingSpeed = 50;
-  const pauseTime = 1500; // delay after full text typed
+  const pauseTime = 1500;
 
   useEffect(() => {
     let timer;
@@ -42,7 +42,7 @@ const TypingEffect = () => {
 
   return (
     <div className={`${styles.flexCenter} flex-col`}>
-      <h1 className="font-poppins font-semibold text-[48px] sm:text-[64px] text-white text-center">
+      <h1 className="font-poppins font-semibold text-[32px] sm:text-[48px] md:text-[64px] text-white text-center leading-tight min-h-[3.5rem] sm:min-h-[4rem] md:min-h-[5rem]">
         {displayText}
         <span className="blinking-cursor">|</span>
       </h1>
