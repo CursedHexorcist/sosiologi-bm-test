@@ -138,3 +138,26 @@
   background: rgba(255, 255, 255, 0.6);
   filter: blur(750px);
 }
+
+/* ===========================
+  TYPING CURSOR EFFECT
+=========================== */
+
+.blinking-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background-color: white;
+  margin-left: 2px;
+  animation: blink 1s step-start infinite;
+  vertical-align: bottom;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
