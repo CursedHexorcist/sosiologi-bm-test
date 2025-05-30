@@ -6,17 +6,21 @@ const Hero = () => (
     {/* Left Side */}
     <div className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6`}>
       {/* Nama dan Kelas */}
-      <div className="flex flex-row space-x-6 mb-4">
+      <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 mb-4">
         {/* Nama */}
-        <div className="flex flex-col py-[6px] px-4 bg-discount-gradient rounded-[10px] min-w-[120px]">
-          <p className={`${styles.paragraph} text-sm mb-1`}>Nama:</p>
-          <p className="text-white font-semibold text-lg">Gabriell</p>
+        <div className="flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px] flex-1 min-w-[120px]">
+          <img src={discount} alt="Icon" className="w-[32px] h-[32px]" />
+          <p className={`${styles.paragraph} ml-2 text-sm`}>
+            Nama: <span className="text-white font-semibold">Gabriell</span>
+          </p>
         </div>
 
         {/* Kelas */}
-        <div className="flex flex-col py-[6px] px-4 bg-discount-gradient rounded-[10px] min-w-[120px]">
-          <p className={`${styles.paragraph} text-sm mb-1`}>KELAS:</p>
-          <p className="text-white font-semibold text-lg">XA</p>
+        <div className="flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px] flex-1 min-w-[120px]">
+          <img src={discount} alt="Icon" className="w-[32px] h-[32px]" />
+          <p className={`${styles.paragraph} ml-2 text-sm`}>
+            KELAS: <span className="text-white font-semibold">XA</span>
+          </p>
         </div>
       </div>
 
