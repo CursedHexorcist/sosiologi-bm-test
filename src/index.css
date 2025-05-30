@@ -144,18 +144,13 @@
 =========================== */
 
 .blinking-cursor {
-  display: inline;
-  animation: blink 1s steps(2, start) infinite;
+  font-weight: 100;
+  font-size: inherit;
   color: white;
-  font-weight: 900;
-  vertical-align: bottom;
+  animation: blink 1s step-start infinite;
 }
 
 @keyframes blink {
-  0%, 50% {
-    opacity: 1;
-  }
-  51%, 100% {
-    opacity: 0;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
