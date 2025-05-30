@@ -42,7 +42,7 @@ const TypingEffect = () => {
 
   return (
     <div className={`${styles.flexCenter} flex-col`}>
-      <h1 className="font-poppins font-semibold text-[32px] sm:text-[48px] md:text-[64px] text-white text-center leading-tight min-h-[3.5rem] sm:min-h-[4rem] md:min-h-[5rem]">
+      <h1 className="font-poppins font-semibold text-[20px] sm:text-[36px] md:text-[48px] text-white text-center leading-tight min-h-[3rem] sm:min-h-[4rem] md:min-h-[5rem]">
         {displayText}
         <span className="blinking-cursor">|</span>
       </h1>
