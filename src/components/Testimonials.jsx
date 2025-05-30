@@ -15,7 +15,7 @@ const Testimonials = () => (
     </div>
 
     {/* Teks Kanan */}
-    <div className={layout.sectionInfo}>
+    <div className={`${layout.sectionInfo} pl-10`}>
       <h2 className={styles.heading2}>
         Pelanggaran <br className="sm:block hidden" /> Lalu Lintas
       </h2>
