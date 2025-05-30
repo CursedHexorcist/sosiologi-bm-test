@@ -42,7 +42,7 @@ const Hero = () => (
 
       {/* Description */}
       <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-        5 contoh penyimpangan sosial yang umumnya terjadi di tempat umum :
+        Memberikan 5 contoh penyimpangan sosial yang umum terjadi di sekitar, beserta penjelasannya
       </p>
     </div>
 
