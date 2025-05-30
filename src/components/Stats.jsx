@@ -10,30 +10,32 @@ const texts = [
 const Stats = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [translateX, setTranslateX] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
   const textRef = useRef(null);
 
-  // Durasi scroll dalam ms
   const scrollDuration = 8000;
 
   useEffect(() => {
     if (!textRef.current) return;
 
-    // Reset posisi ke kanan penuh (100% viewport width)
+    // Step 1: Reset posisi teks ke kanan (tanpa animasi)
+    setIsAnimating(false);
     setTranslateX(window.innerWidth);
 
-    // Mulai animasi dengan delay sedikit untuk reset posisi
-    const timeoutId = setTimeout(() => {
+    // Step 2: Jalankan animasi scroll setelah reset posisi (pakai timeout kecil)
+    const animTimeout = setTimeout(() => {
+      setIsAnimating(true);
       setTranslateX(-textRef.current.offsetWidth);
     }, 50);
 
-    // Setelah animasi selesai, ganti teks
-    const changeTextTimeout = setTimeout(() => {
+    // Step 3: Setelah animasi selesai, ganti teks berikutnya
+    const nextTextTimeout = setTimeout(() => {
       setCurrentIndex((prev) => (prev + 1) % texts.length);
-    }, scrollDuration + 100); // +100 ms untuk buffer
+    }, scrollDuration + 50);
 
     return () => {
-      clearTimeout(timeoutId);
-      clearTimeout(changeTextTimeout);
+      clearTimeout(animTimeout);
+      clearTimeout(nextTextTimeout);
     };
   }, [currentIndex]);
 
@@ -51,7 +53,7 @@ const Stats = () => {
           color: "white",
           position: "relative",
           transform: `translateX(${translateX}px)`,
-          transition: `transform ${scrollDuration}ms linear`,
+          transition: isAnimating ? `transform ${scrollDuration}ms linear` : "none",
         }}
       >
         {texts[currentIndex]}
