@@ -6,35 +6,38 @@ const Hero = () => (
     {/* Left Side */}
     <div className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6`}>
       {/* Discount Promo 1 */}
-      <div className="flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px] mb-2">
+      <div className="flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px] mb-2 w-fit">
         <img src={discount} alt="Discount" className="w-[32px] h-[32px]" />
         <p className={`${styles.paragraph} ml-2`}>
           <span className="text-white">Gabriell</span> XA
         </p>
       </div>
 
-      {/* Discount Promo 2 */}
-      <div className="flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px] mb-4">
-        <img src={discount} alt="Discount" className="w-[32px] h-[32px]" />
-        <p className={`${styles.paragraph} ml-2`}>
-          Mata Pelajaran <span className="text-white">Sosiologi</span>
-        </p>
-      </div>
+      {/* Discount Promo 2 + Guru */}
+      <div className="flex flex-row items-center space-x-4 mb-4">
+        {/* Mata Pelajaran Sosiologi */}
+        <div className="flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px]">
+          <img src={discount} alt="Discount" className="w-[32px] h-[32px]" />
+          <p className={`${styles.paragraph} ml-2`}>
+            Mata Pelajaran <span className="text-white">Sosiologi</span>
+          </p>
+        </div>
 
-      {/* Heading */}
-      <div className="flex flex-row justify-between items-center w-full">
-        <h1 className="flex-1 font-poppins font-semibold ss:text-[72px] text-[52px] text-white ss:leading-[100px] leading-[75px]">
-          Penyimpangan <br className="sm:block hidden" />
-          <span className="text-gradient">Sosial</span>
-        </h1>
-
-        {/* Guru Shape */}
-        <div className="hidden ss:flex items-center py-[6px] px-4 bg-discount-gradient rounded-[10px] ml-4">
+        {/* Guru: Ibu Yulida */}
+        <div className="flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px]">
           <img src={discount} alt="Discount" className="w-[32px] h-[32px]" />
           <p className={`${styles.paragraph} ml-2`}>
             Guru: <span className="text-white">Ibu Yulida</span>
           </p>
         </div>
+      </div>
+
+      {/* Heading */}
+      <div className="w-full">
+        <h1 className="font-poppins font-semibold ss:text-[72px] text-[52px] text-white ss:leading-[100px] leading-[75px]">
+          Penyimpangan <br className="sm:block hidden" />
+          <span className="text-gradient">Sosial</span>
+        </h1>
       </div>
 
       {/* Description */}
@@ -45,7 +48,6 @@ const Hero = () => (
 
     {/* Right Side */}
     <div className={`flex-1 flex ${styles.flexCenter} md:my-0 my-10 relative`}>
-      {/* Background */}
       <img
         src={robot}
         alt="Robot"
