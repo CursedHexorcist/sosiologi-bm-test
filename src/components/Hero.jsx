@@ -56,7 +56,7 @@ const Hero = () => (
       <img
         src="/photos/react-ic.png"
         alt="React Icon"
-        className="w-[100%] h-[100%] relative z-[5] object-contain"
+        className="w-[70%] h-[70%] relative z-[5] object-contain"
       />
 
       {/* Gradient Layers */}
