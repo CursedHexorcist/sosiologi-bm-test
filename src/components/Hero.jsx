@@ -1,5 +1,5 @@
 import styles from "../styles";
-import { discount, robot } from "../assets";
+import { discount } from "../assets";
 
 const Hero = () => (
   <section id="home" className={`flex md:flex-row flex-col ${styles.paddingY}`}>
@@ -7,15 +7,12 @@ const Hero = () => (
     <div className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6`}>
       {/* Nama dan Kelas */}
       <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 mb-4">
-        {/* Nama */}
         <div className="flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px] flex-1 min-w-[120px]">
           <img src={discount} alt="Icon" className="w-[32px] h-[32px]" />
           <p className={`${styles.paragraph} ml-2 text-sm`}>
             Nama: <span className="text-white font-semibold">Gabriell</span>
           </p>
         </div>
-
-        {/* Kelas */}
         <div className="flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px] flex-1 min-w-[120px]">
           <img src={discount} alt="Icon" className="w-[32px] h-[32px]" />
           <p className={`${styles.paragraph} ml-2 text-sm`}>
@@ -26,15 +23,12 @@ const Hero = () => (
 
       {/* Mata Pelajaran dan Guru */}
       <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 mb-6">
-        {/* Mata Pelajaran Sosiologi */}
         <div className="flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px] flex-1">
           <img src={discount} alt="Discount" className="w-[32px] h-[32px]" />
           <p className={`${styles.paragraph} ml-2 text-sm`}>
             Mata Pelajaran: <span className="text-white font-semibold">Sosiologi</span>
           </p>
         </div>
-
-        {/* Guru */}
         <div className="flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px] flex-1">
           <img src={discount} alt="Discount" className="w-[32px] h-[32px]" />
           <p className={`${styles.paragraph} ml-2 text-sm`}>
@@ -60,9 +54,9 @@ const Hero = () => (
     {/* Right Side */}
     <div className={`flex-1 flex ${styles.flexCenter} md:my-0 my-10 relative`}>
       <img
-        src={robot}
-        alt="Robot"
-        className="w-[100%] h-[100%] relative z-[5]"
+        src="/photos/react-ic.png"
+        alt="React Icon"
+        className="w-[100%] h-[100%] relative z-[5] object-contain"
       />
 
       {/* Gradient Layers */}
