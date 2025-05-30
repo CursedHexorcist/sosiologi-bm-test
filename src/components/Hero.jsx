@@ -5,37 +5,6 @@ const Hero = () => (
   <section id="home" className={`flex md:flex-row flex-col ${styles.paddingY}`}>
     {/* Left Side */}
     <div className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6`}>
-      {/* Nama dan Kelas */}
-      <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 mb-4">
-        <div className="flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px] flex-1 min-w-[120px]">
-          <img src={discount} alt="Icon" className="w-[32px] h-[32px]" />
-          <p className={`${styles.paragraph} ml-2 text-sm`}>
-            Nama: <span className="text-white font-semibold">Gabriell</span>
-          </p>
-        </div>
-        <div className="flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px] flex-1 min-w-[120px]">
-          <img src={discount} alt="Icon" className="w-[32px] h-[32px]" />
-          <p className={`${styles.paragraph} ml-2 text-sm`}>
-            KELAS: <span className="text-white font-semibold">XA</span>
-          </p>
-        </div>
-      </div>
-
-      {/* Mata Pelajaran dan Guru */}
-      <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 mb-6">
-        <div className="flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px] flex-1">
-          <img src={discount} alt="Discount" className="w-[32px] h-[32px]" />
-          <p className={`${styles.paragraph} ml-2 text-sm`}>
-            Mata Pelajaran: <span className="text-white font-semibold">Sosiologi</span>
-          </p>
-        </div>
-        <div className="flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px] flex-1">
-          <img src={discount} alt="Discount" className="w-[32px] h-[32px]" />
-          <p className={`${styles.paragraph} ml-2 text-sm`}>
-            Guru: <span className="text-white font-semibold">Ibu Yulida</span>
-          </p>
-        </div>
-      </div>
 
       {/* Heading */}
       <div className="w-full">
@@ -50,7 +19,7 @@ const Hero = () => (
         <div className="flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px]">
           <img src={discount} alt="Icon" className="w-[32px] h-[32px]" />
           <p className={`${styles.paragraph} ml-2 text-sm`}>
-            Gabriell: <span className="text-white font-semibold">Tanjaya</span>
+            Nama: <span className="text-white font-semibold">Gabriell T</span>
           </p>
         </div>
         <div className="flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px]">
