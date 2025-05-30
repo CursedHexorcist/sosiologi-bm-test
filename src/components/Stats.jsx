@@ -4,7 +4,7 @@ import styles from "../styles";
 const texts = [
   "SMA NEGERI 10 PONTIANAK",
   "SEKOLAHNYA PARA JUARA",
-  "MADE BY GABRIELL T  XA",
+  "MADE BY GABRIELL T XA",
 ];
 
 const Stats = () => {
@@ -27,34 +27,43 @@ const Stats = () => {
     // posisi akhir di luar viewport kiri = -lebar teks
     const endPos = -textWidth;
 
-    // total jarak scroll
-    const distance = startPos - endPos;
-
-    return { startPos, endPos, distance };
+    return { startPos, endPos };
   };
 
+  // Setup animasi tiap kali teks berganti
   useEffect(() => {
     if (!textRef.current) return;
 
     const { startPos, endPos } = getPositions();
 
+    // reset posisi ke kanan tanpa transisi dulu
     setIsAnimating(false);
     setTranslateX(startPos);
 
-    // beri delay kecil sebelum mulai animasi supaya posisi translateX benar dulu
-    const animTimeout = setTimeout(() => {
+    // sedikit delay biar browser apply posisi reset dulu
+    const delay = setTimeout(() => {
+      // mulai animasi scroll ke kiri
       setIsAnimating(true);
       setTranslateX(endPos);
     }, 50);
 
-    // setelah animasi selesai, ganti teks berikutnya
-    const nextTextTimeout = setTimeout(() => {
+    return () => clearTimeout(delay);
+  }, [currentIndex]);
+
+  // Handler saat animasi scroll selesai (transisi selesai)
+  useEffect(() => {
+    const el = textRef.current;
+    if (!el) return;
+
+    const onTransitionEnd = () => {
+      // setelah animasi selesai, ganti ke teks berikutnya
       setCurrentIndex((prev) => (prev + 1) % texts.length);
-    }, scrollDuration + 50);
+    };
+
+    el.addEventListener("transitionend", onTransitionEnd);
 
     return () => {
-      clearTimeout(animTimeout);
-      clearTimeout(nextTextTimeout);
+      el.removeEventListener("transitionend", onTransitionEnd);
     };
   }, [currentIndex]);
 
@@ -74,6 +83,7 @@ const Stats = () => {
           transform: `translateX(${translateX}px)`,
           transition: isAnimating ? `transform ${scrollDuration}ms linear` : "none",
           userSelect: "none",
+          willChange: "transform",
         }}
       >
         {texts[currentIndex]}
