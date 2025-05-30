@@ -30,7 +30,7 @@ const Hero = () => (
         <div className="flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px] flex-1">
           <img src={discount} alt="Discount" className="w-[32px] h-[32px]" />
           <p className={`${styles.paragraph} ml-2 text-sm`}>
-            Mata Pelajaran <span className="text-white font-semibold">Sosiologi</span>
+            Mata Pelajaran: <span className="text-white font-semibold">Sosiologi</span>
           </p>
         </div>
 
