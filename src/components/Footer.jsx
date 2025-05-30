@@ -15,7 +15,7 @@ const Footer = () => (
     <div className="w-full flex justify-center pt-6 border-t-[1px] border-t-[#3F3E45]">
       <p className="font-poppins font-normal text-center text-[16px] leading-[24px] text-white">
         Copyright &copy; {new Date().getFullYear()}{" "}
-        <span className="text-secondary">HooBank</span>. All Rights Reserved.
+        <span className="text-secondary">Gabriell T</span>. All Rights Reserved.
       </p>
     </div>
   </section>
