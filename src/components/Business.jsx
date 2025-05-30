@@ -17,13 +17,11 @@ const Business = () => {
 
       {/* Kanan: Gambar */}
       <div className="flex-1 flex justify-center items-center mt-10 md:mt-0">
-        <div className="w-[320px] h-[320px] rounded-[20px] overflow-hidden shadow-lg">
-          <img
-            src="/photos/image-sampah.jpeg"
-            alt="Membuang Sampah Sembarangan"
-            className="w-full h-full object-cover"
-          />
-        </div>
+        <img
+          src="/photos/image-sampah.jpeg"
+          alt="Membuang Sampah Sembarangan"
+          className="w-full h-full max-w-[500px] max-h-[400px] object-cover rounded-[20px]"
+        />
       </div>
     </section>
   );
