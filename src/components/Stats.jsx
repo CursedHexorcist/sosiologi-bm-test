@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import styles from "../styles";
 
 const texts = [
-  "SMA NEGERI 10 PONTIANAK",
+  "SMA NEGERI 10 PTK",
   "SEKOLAHNYA PARA JUARA",
   "MADE BY GABRIELL T XA",
 ];
