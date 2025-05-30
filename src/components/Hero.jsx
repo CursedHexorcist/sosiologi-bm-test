@@ -16,24 +16,33 @@ const Hero = () => (
 
       {/* 4 Label Baru di Bawah Judul */}
       <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-[470px]">
-        <div className="flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px]">
+        {/* Nama Siswa */}
+        <div className="flex items-center py-[6px] px-4 bg-discount-gradient rounded-[10px]">
           <img src={discount} alt="Icon" className="w-[32px] h-[32px]" />
-          <p className={`${styles.paragraph} ml-2 text-sm`}>
-            Nama Siswa: <span className="text-white font-semibold">Gabriell T</span>
-          </p>
+          <div className="ml-2 text-sm">
+            <p className={`${styles.paragraph} text-gray-300`}>Nama Siswa:</p>
+            <p className="text-white font-semibold">Gabriell T</p>
+          </div>
         </div>
+
+        {/* Mata Pelajaran */}
         <div className="flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px]">
           <img src={discount} alt="Icon" className="w-[32px] h-[32px]" />
           <p className={`${styles.paragraph} ml-2 text-sm`}>
             Mata Pelajaran: <span className="text-white font-semibold">Sosiologi</span>
           </p>
         </div>
-        <div className="flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px]">
+
+        {/* Nama Guru */}
+        <div className="flex items-center py-[6px] px-4 bg-discount-gradient rounded-[10px]">
           <img src={discount} alt="Icon" className="w-[32px] h-[32px]" />
-          <p className={`${styles.paragraph} ml-2 text-sm`}>
-            Nama Guru: <span className="text-white font-semibold">Ibu Yulida</span>
-          </p>
+          <div className="ml-2 text-sm">
+            <p className={`${styles.paragraph} text-gray-300`}>Nama Guru:</p>
+            <p className="text-white font-semibold">Ibu Yulida</p>
+          </div>
         </div>
+
+        {/* Tahun Ajaran */}
         <div className="flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px]">
           <img src={discount} alt="Icon" className="w-[32px] h-[32px]" />
           <p className={`${styles.paragraph} ml-2 text-sm`}>
