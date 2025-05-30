@@ -1,24 +1,31 @@
-import { stats } from "../constants";
 import styles from "../styles";
 
-const Stats = () => (
-  <section className={`${styles.flexCenter} flex-row flex-wrap sm:mb-20 mb-6`}>
-    {stats.map((stat) => (
-      <div
-        key={stat.id}
-        className={`flex-1 flex justify-start items-center flex-row m-3`}
-      >
-        {/* Value */}
-        <h4 className="font-poppins font-semibold xs:text-[40px] text-[30px] xs:leading-[53px] leading-[43px] text-white">
-          {stat.value}
-        </h4>
-        {/* Title */}
-        <p className="font-poppins font-normal xs:text-[20px] text-[15px] xs:leading-[26px] leading-[21px] text-gradient uppercase ml-3">
-          {stat.title}
-        </p>
+const Stats = () => {
+  return (
+    <section className={`${styles.flexCenter} overflow-hidden w-full py-4`}>
+      <div className="whitespace-nowrap animate-marquee text-white font-poppins font-semibold text-xl sm:text-3xl">
+        SMA NEGERI 10 PONTIANAK - JUARA SEJATI &nbsp;&nbsp;&nbsp; {/* spasi agar jarak antar loop */}
+        SMA NEGERI 10 PONTIANAK - JUARA SEJATI &nbsp;&nbsp;&nbsp;
+        SMA NEGERI 10 PONTIANAK - JUARA SEJATI &nbsp;&nbsp;&nbsp;
       </div>
-    ))}
-  </section>
-);
+
+      <style jsx>{`
+        @keyframes marquee {
+          0% {
+            transform: translateX(100%);
+          }
+          100% {
+            transform: translateX(-100%);
+          }
+        }
+        .animate-marquee {
+          display: inline-block;
+          padding-left: 100%;
+          animation: marquee 15s linear infinite;
+        }
+      `}</style>
+    </section>
+  );
+};
 
 export default Stats;
