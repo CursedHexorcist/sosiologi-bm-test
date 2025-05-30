@@ -26,11 +26,12 @@ const Hero = () => (
         </div>
 
         {/* Mata Pelajaran */}
-        <div className="flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px]">
+        <div className="flex items-center py-[6px] px-4 bg-discount-gradient rounded-[10px]">
           <img src={discount} alt="Icon" className="w-[32px] h-[32px]" />
-          <p className={`${styles.paragraph} ml-2 text-sm`}>
-            Mata Pelajaran: <span className="text-white font-semibold">Sosiologi</span>
-          </p>
+          <div className="ml-2 text-sm">
+            <p className={`${styles.paragraph} text-gray-300`}>Mata Pelajaran:</p>
+            <p className="text-white font-semibold">Sosiologi</p>
+          </div>
         </div>
 
         {/* Nama Guru */}
@@ -43,11 +44,12 @@ const Hero = () => (
         </div>
 
         {/* Tahun Ajaran */}
-        <div className="flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px]">
+        <div className="flex items-center py-[6px] px-4 bg-discount-gradient rounded-[10px]">
           <img src={discount} alt="Icon" className="w-[32px] h-[32px]" />
-          <p className={`${styles.paragraph} ml-2 text-sm`}>
-            Tahun Ajaran: <span className="text-white font-semibold">2024/2025</span>
-          </p>
+          <div className="ml-2 text-sm">
+            <p className={`${styles.paragraph} text-gray-300`}>Tahun Ajaran:</p>
+            <p className="text-white font-semibold">2024/2025</p>
+          </div>
         </div>
       </div>
 
