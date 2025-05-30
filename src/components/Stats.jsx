@@ -15,20 +15,27 @@ const Stats = () => {
 
   const scrollDuration = 8000;
 
+  // Fungsi bantu dapatkan posisi awal berdasarkan ukuran layar
+  const getStartPosition = () => {
+    if (window.innerWidth >= 768) {
+      // PC: mulai dari kanan dengan ekstra offset supaya teks lebih lebar space-nya
+      return window.innerWidth + 100;
+    }
+    // Mobile: mulai dari tepat kanan layar
+    return window.innerWidth;
+  };
+
   useEffect(() => {
     if (!textRef.current) return;
 
-    // Step 1: Reset posisi teks ke kanan (tanpa animasi)
     setIsAnimating(false);
-    setTranslateX(window.innerWidth);
+    setTranslateX(getStartPosition());
 
-    // Step 2: Jalankan animasi scroll setelah reset posisi (pakai timeout kecil)
     const animTimeout = setTimeout(() => {
       setIsAnimating(true);
       setTranslateX(-textRef.current.offsetWidth);
     }, 50);
 
-    // Step 3: Setelah animasi selesai, ganti teks berikutnya
     const nextTextTimeout = setTimeout(() => {
       setCurrentIndex((prev) => (prev + 1) % texts.length);
     }, scrollDuration + 50);
@@ -42,18 +49,19 @@ const Stats = () => {
   return (
     <section
       className={`${styles.flexCenter} overflow-hidden w-full py-4`}
-      style={{ height: 80 }}
+      style={{ height: window.innerWidth >= 768 ? 120 : 80 }}
     >
       <div
         ref={textRef}
         style={{
           whiteSpace: "nowrap",
-          fontSize: "3rem",
+          fontSize: window.innerWidth >= 768 ? "4rem" : "3rem",
           fontWeight: "700",
           color: "white",
           position: "relative",
           transform: `translateX(${translateX}px)`,
           transition: isAnimating ? `transform ${scrollDuration}ms linear` : "none",
+          userSelect: "none",
         }}
       >
         {texts[currentIndex]}
