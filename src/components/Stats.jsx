@@ -1,95 +1,53 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../styles";
 
 const texts = [
-  "SMA NEGERI 10 PTK",
+  "SMA NEGERI 10 PONTIANAK",
   "SEKOLAHNYA PARA JUARA",
-  "MADE BY GABRIELL T XA",
+  "MADE BY GABRIELL T XA"
 ];
 
-const Stats = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [translateX, setTranslateX] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const textRef = useRef(null);
+const TypingEffect = () => {
+  const [displayText, setDisplayText] = useState("");
+  const [textIndex, setTextIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [deleting, setDeleting] = useState(false);
+  const typingSpeed = 100; // ms per character
+  const deletingSpeed = 50;
+  const pauseTime = 1500; // delay after full text typed
 
-  // Durasi scroll (ms)
-  const scrollDuration = 10000; // 10 detik scroll perlahan
-
-  // Hitung posisi awal dan akhir berdasarkan ukuran teks dan viewport
-  const getPositions = () => {
-    const vw = window.innerWidth;
-    const textWidth = textRef.current ? textRef.current.offsetWidth : 0;
-
-    // posisi mulai di luar viewport kanan
-    const startPos = vw;
-
-    // posisi akhir di luar viewport kiri = -lebar teks
-    const endPos = -textWidth;
-
-    return { startPos, endPos };
-  };
-
-  // Setup animasi tiap kali teks berganti
   useEffect(() => {
-    if (!textRef.current) return;
+    let timer;
 
-    const { startPos, endPos } = getPositions();
+    if (!deleting && charIndex <= texts[textIndex].length) {
+      timer = setTimeout(() => {
+        setDisplayText(texts[textIndex].substring(0, charIndex));
+        setCharIndex(charIndex + 1);
+      }, typingSpeed);
+    } else if (deleting && charIndex >= 0) {
+      timer = setTimeout(() => {
+        setDisplayText(texts[textIndex].substring(0, charIndex));
+        setCharIndex(charIndex - 1);
+      }, deletingSpeed);
+    } else if (!deleting && charIndex > texts[textIndex].length) {
+      timer = setTimeout(() => setDeleting(true), pauseTime);
+    } else if (deleting && charIndex < 0) {
+      setDeleting(false);
+      setCharIndex(0);
+      setTextIndex((textIndex + 1) % texts.length);
+    }
 
-    // reset posisi ke kanan tanpa transisi dulu
-    setIsAnimating(false);
-    setTranslateX(startPos);
-
-    // sedikit delay biar browser apply posisi reset dulu
-    const delay = setTimeout(() => {
-      // mulai animasi scroll ke kiri
-      setIsAnimating(true);
-      setTranslateX(endPos);
-    }, 50);
-
-    return () => clearTimeout(delay);
-  }, [currentIndex]);
-
-  // Handler saat animasi scroll selesai (transisi selesai)
-  useEffect(() => {
-    const el = textRef.current;
-    if (!el) return;
-
-    const onTransitionEnd = () => {
-      // setelah animasi selesai, ganti ke teks berikutnya
-      setCurrentIndex((prev) => (prev + 1) % texts.length);
-    };
-
-    el.addEventListener("transitionend", onTransitionEnd);
-
-    return () => {
-      el.removeEventListener("transitionend", onTransitionEnd);
-    };
-  }, [currentIndex]);
+    return () => clearTimeout(timer);
+  }, [charIndex, deleting, textIndex]);
 
   return (
-    <section
-      className={`${styles.flexCenter} overflow-hidden w-full py-4`}
-      style={{ height: window.innerWidth >= 768 ? 120 : 80 }}
-    >
-      <div
-        ref={textRef}
-        style={{
-          whiteSpace: "nowrap",
-          fontSize: window.innerWidth >= 768 ? "4rem" : "3rem",
-          fontWeight: "700",
-          color: "white",
-          position: "relative",
-          transform: `translateX(${translateX}px)`,
-          transition: isAnimating ? `transform ${scrollDuration}ms linear` : "none",
-          userSelect: "none",
-          willChange: "transform",
-        }}
-      >
-        {texts[currentIndex]}
-      </div>
-    </section>
+    <div className={`${styles.flexCenter} flex-col`}>
+      <h1 className="font-poppins font-semibold text-[48px] sm:text-[64px] text-white text-center">
+        {displayText}
+        <span className="blinking-cursor">|</span>
+      </h1>
+    </div>
   );
 };
 
-export default Stats;
+export default TypingEffect;
