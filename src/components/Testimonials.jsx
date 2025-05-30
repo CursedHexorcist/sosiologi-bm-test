@@ -1,21 +1,21 @@
-import styles from "../styles";
+import styles, { layout } from "../styles";
 
 const Testimonials = () => (
   <section
     id="clients"
-    className={`flex flex-col-reverse sm:flex-row ${styles.paddingY}`}
+    className={`${styles.paddingY} ${layout.section} flex-col-reverse sm:flex-row`}
   >
-    {/* Gambar */}
-    <div className="flex-1 flex justify-center items-center sm:mr-10">
+    {/* Gambar Kanan (di-desktop), Bawah (di-mobile) */}
+    <div className={`${layout.sectionImg}`}>
       <img
         src="/photos/image-lalulintas.png"
         alt="Pelanggaran Lalu Lintas"
-        className="w-full h-full object-cover rounded-[20px]"
+        className="w-[100%] h-[100%] object-cover rounded-[20px]"
       />
     </div>
 
-    {/* Teks */}
-    <div className="flex-1 flex flex-col justify-center items-start sm:pl-10 px-4 sm:px-0">
+    {/* Teks Kiri (di-desktop), Atas (di-mobile) */}
+    <div className={`${layout.sectionInfo} pl-0 sm:pl-10`}>
       <h2 className={styles.heading2}>
         Pelanggaran <br className="sm:block hidden" /> Lalu Lintas
       </h2>
