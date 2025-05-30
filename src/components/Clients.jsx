@@ -1,22 +1,24 @@
-import { clients } from "../constants";
-import styles from "../styles";
+import styles, { layout } from "../styles";
 
 const Clients = () => (
-  <section className={`${styles.flexCenter} my-4`}>
-    <div className={`${styles.flexCenter} flex-wrap w-full`}>
-      {clients.map((client, i) => (
-        <div
-          key={client.id}
-          className={`flex-1 ${styles.flexCenter} sm:min-w-[192px] min-w-[120px]`}
-        >
-          {/* Client Logo */}
-          <img
-            src={client.logo}
-            alt={`client-${i + 1}`}
-            className="sm:w-[192px] w-[100px] object-contain hover:brightness-0 hover:invert transition ease-in-out duration-300"
-          />
-        </div>
-      ))}
+  <section className={`${layout.section} flex-col md:flex-row`}>
+    {/* Kiri: Penjelasan */}
+    <div className="flex-1 flex flex-col justify-center">
+      <h2 className="font-poppins font-semibold text-white text-[28px] sm:text-[36px] leading-[40px] sm:leading-[50px] mb-4">
+        Menggunakan Fasilitas Umum Secara Tidak Benar
+      </h2>
+      <p className="font-poppins font-normal text-dimWhite text-[16px] leading-[28px] max-w-[550px]">
+        Contohnya seperti mencoret-coret tembok fasilitas umum, merusak bangku taman, atau menggunakan toilet umum secara jorok. Tindakan ini mencerminkan penyimpangan terhadap norma kesopanan dan tanggung jawab sosial, serta dapat mengurangi kenyamanan dan keindahan lingkungan umum.
+      </p>
+    </div>
+
+    {/* Kanan: Gambar */}
+    <div className="flex-1 flex justify-center items-center mt-10 md:mt-0">
+      <img
+        src="/photos/image-fasilitas.jpg"
+        alt="Fasilitas Umum"
+        className="w-full h-full max-w-[500px] max-h-[400px] object-cover rounded-[20px]"
+      />
     </div>
   </section>
 );
