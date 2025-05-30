@@ -1,36 +1,30 @@
-import { feedback } from "../constants";
-import styles from "../styles";
-import FeedbackCard from "./FeedbackCard";
+import styles, { layout } from "../styles";
 
 const Testimonials = () => (
   <section
     id="clients"
-    className={`${styles.paddingY} ${styles.flexCenter} flex-col relative `}
+    className={`${styles.paddingY} ${layout.section}`}
   >
-    {/* Gradient */}
-    <div className="absolute z-[0] w-[60%] h-[60%] -right-[50%] rounded-full blue__gradient bottom-40" />
-
-    {/* Heading */}
-    <div className="w-full flex justify-between items-center md:flex-row flex-col sm:mb-16 mb-6 relative z-[1]">
-      <h2 className={`${styles.heading2} md:text-center`}>
-        What People are <br className="sm:block hidden" /> saying about us
-      </h2>
-      <div className="w-full md:mt-0 mt-6">
-        <p className={`${styles.paragraph} text-left max-w-[450px]`}>
-          Everything you need to accept card payments and grow your business
-          anywhere on the planet.
-        </p>
-      </div>
+    {/* Gambar Kiri */}
+    <div className={layout.sectionImg}>
+      <img
+        src="/photos/image-lalulintas.png"
+        alt="Pelanggaran Lalu Lintas"
+        className="w-[100%] h-[100%] object-cover rounded-[20px]"
+      />
     </div>
 
-    {/* Feedback Cards */}
-    <div
-      className="flex flex-wrap sm:justify-start w-full feedback-container relative z-[1]"
-      style={{ justifyContent: "center" }}
-    >
-      {feedback.map((card) => (
-        <FeedbackCard key={card.id} {...card} />
-      ))}
+    {/* Teks Kanan */}
+    <div className={layout.sectionInfo}>
+      <h2 className={styles.heading2}>
+        Pelanggaran <br className="sm:block hidden" /> Lalu Lintas
+      </h2>
+      <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
+        Contohnya seperti menerobos lampu merah, tidak memakai helm, atau
+        berkendara tanpa SIM. Tindakan ini melanggar norma hukum dan dapat
+        membahayakan keselamatan diri sendiri maupun orang lain. Pelanggaran
+        lalu lintas juga mencerminkan rendahnya disiplin dalam masyarakat.
+      </p>
     </div>
   </section>
 );
